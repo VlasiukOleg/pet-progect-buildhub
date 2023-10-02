@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpet_project_buildhub=self.webpackChunkpet_project_buildhub||[]).push([[983],{983:function(e,u,t){t.r(u),t.d(u,{default:function(){return c}});var n=t(184);function c(){return(0,n.jsx)("div",{children:(0,n.jsx)("h1",{children:"Welcome to BuildHub"})})}}}]);
+//# sourceMappingURL=983.7a4d170e.chunk.js.map
