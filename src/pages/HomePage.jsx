@@ -1,12 +1,14 @@
 import { MaterialsCategoriesList } from "Components/MaterialsCategoriesList/MaterialsCategoriesList";
 import { Container } from "Components/Container/Container";
 
+import { Title } from "./HomePage.styled";
+
 export default function Home() {
     return (
       <Container>
-        <h1>
+        <Title>
           Замовлення матеріалів для ручної та машинної штукатурки
-        </h1>
+        </Title>
         <MaterialsCategoriesList/>
       </Container>
     );
