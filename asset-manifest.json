@@ -1,15 +1,16 @@
 {
   "files": {
     "main.css": "/pet-project-buildhub/static/css/main.c7dce965.css",
-    "main.js": "/pet-project-buildhub/static/js/main.82a703f9.js",
-    "static/js/86.388a2e8a.chunk.js": "/pet-project-buildhub/static/js/86.388a2e8a.chunk.js",
+    "main.js": "/pet-project-buildhub/static/js/main.f900f401.js",
+    "static/js/384.58ee39bf.chunk.js": "/pet-project-buildhub/static/js/384.58ee39bf.chunk.js",
+    "static/media/mp75.jpg": "/pet-project-buildhub/static/media/mp75.d14f0ca17afe25da99d3.jpg",
     "index.html": "/pet-project-buildhub/index.html",
     "main.c7dce965.css.map": "/pet-project-buildhub/static/css/main.c7dce965.css.map",
-    "main.82a703f9.js.map": "/pet-project-buildhub/static/js/main.82a703f9.js.map",
-    "86.388a2e8a.chunk.js.map": "/pet-project-buildhub/static/js/86.388a2e8a.chunk.js.map"
+    "main.f900f401.js.map": "/pet-project-buildhub/static/js/main.f900f401.js.map",
+    "384.58ee39bf.chunk.js.map": "/pet-project-buildhub/static/js/384.58ee39bf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c7dce965.css",
-    "static/js/main.82a703f9.js"
+    "static/js/main.f900f401.js"
   ]
 }
