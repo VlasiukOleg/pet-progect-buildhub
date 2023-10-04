@@ -1,13 +1,18 @@
-import { CategoryWrap, CategoryNumber, CategoryTitle, CategoryInnerWrap, MaterialsWrap, ImgWrap, InfoWrap, Price, IncreaseBtn, DecreaseBtn, Input, QuantityWrap, TotalPrice} from "./MaterialsCategoriesList.styled"
+import { CategoryWrap, CategoryNumber, CategoryTitle, CategoryInnerWrap, MaterialsWrap, ImgWrap, InfoWrap, Price, IncreaseBtn, DecreaseBtn, Input, QuantityWrap, TotalPrice, ToogleCategoryBtn } from "./MaterialsCategoriesList.styled"
 import mp75 from '../../images/mp75.jpg'
 
 import { useState } from "react"
 
 import { OrderBar } from "Components/OrderBar/OrderBar"
 
+import { BiSolidDownArrow} from "react-icons/bi";
+import { BiSolidUpArrow} from "react-icons/bi";
+
 export const MaterialsCategoriesList = () => {
     const [quantity, setQuantity] = useState(0);
     // const [totalPrice, setTotalPrice] = useState(0);
+
+    const [isCategoryOpen, setIsCategoryOpen] = useState(false)
 
     const total = (quantity * 299.89).toFixed(2);
     const weight = quantity * 30;
@@ -18,6 +23,10 @@ export const MaterialsCategoriesList = () => {
     }
     const onIncrease = () => {
         setQuantity(prevState => prevState + 1);  
+    }
+
+    const onCategoryOpen = () => {
+        setIsCategoryOpen(prevState => !prevState)
     }
 
     const handleChange = (e) => {
@@ -32,8 +41,9 @@ export const MaterialsCategoriesList = () => {
                     <CategoryNumber>1</CategoryNumber>
                     <CategoryTitle>Штукатурка гіпсова машиного та ручного нанесення</CategoryTitle>
                 </CategoryInnerWrap>
-                <button type="button">Свернуть</button>
+                <ToogleCategoryBtn type="button" onClick={onCategoryOpen}>{isCategoryOpen ? "Розгорнути" : "Згорнути"}{isCategoryOpen ? < BiSolidDownArrow size='18px'/> :  < BiSolidUpArrow size='18px'/> }</ToogleCategoryBtn>
             </CategoryWrap>
+            {!isCategoryOpen && 
             <MaterialsWrap>
                 <ImgWrap>
                     <img src={mp75} alt="Штукатурка МП75" width={150} height={150}/>
@@ -51,11 +61,9 @@ export const MaterialsCategoriesList = () => {
                 </QuantityWrap>
                 <TotalPrice>
                     {total} грн.
-                </TotalPrice>
-                
+                </TotalPrice>                
             </MaterialsWrap>
-            
-            
+            }           
         </>
         
     )

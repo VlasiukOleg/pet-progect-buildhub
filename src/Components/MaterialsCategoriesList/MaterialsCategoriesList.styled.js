@@ -33,7 +33,21 @@ export const CategoryTitle = styled.div`
     color: #696969;
     font-weight: 500;
 `
+export const ToogleCategoryBtn = styled.button`
+display: flex;
+justify-content: center;
+align-items: center;
+font-weight: 700;
+background-color: transparent;
+outline: none;
+border: none;
+color: #696969;
+cursor: pointer;
 
+&:hover {
+    color: #5F9EA0;
+}
+`
 
 export const MaterialsWrap = styled.div`
     display: flex;
@@ -45,8 +59,8 @@ export const ImgWrap = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
-width: 150px;
-height: 150px;
+max-width: 150px;
+max-height: 150px;
 border-radius: 5px;
 border: 1px solid #5F9EA0;
 overflow: hidden;
@@ -56,12 +70,12 @@ export const InfoWrap = styled.div`
 max-width: 500px;
 
 h2 {
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 10px;
 }
 
 p {
-    font-size: 14px;
+    font-size: 12px;
     margin-bottom: 10px;
     color: #696969;
 }
@@ -70,7 +84,7 @@ p {
 
 
 export const Price = styled.div`
-font-size: 20px;
+font-size: 18px;
 font-weight: 500;
 `
 
@@ -101,7 +115,7 @@ export const DecreaseBtn = styled.button`
 
 export const Input = styled.input`
     max-width: 60px;
-    font-size: 32px;
+    font-size: 28px;
     outline: none;
     border: none;
     text-align: center;
