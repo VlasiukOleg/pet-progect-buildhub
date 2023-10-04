@@ -7,7 +7,7 @@ import { OrderBar } from "Components/OrderBar/OrderBar"
 
 export const MaterialsCategoriesList = () => {
     const [quantity, setQuantity] = useState(0);
-    const [totalPrice, setTotalPrice] = useState(0);
+    // const [totalPrice, setTotalPrice] = useState(0);
 
     const total = (quantity * 299.89).toFixed(2);
     const weight = quantity * 30;
