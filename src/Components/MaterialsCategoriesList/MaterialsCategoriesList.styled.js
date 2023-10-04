@@ -115,3 +115,10 @@ display: flex;
 justify-content: center;
 align-items: center;
 `
+
+export const TotalPrice = styled.div`
+     font-size: 28px;
+     padding: 10px;
+     border: 1px solid #5F9EA0;
+     border-radius: 5px;
+`

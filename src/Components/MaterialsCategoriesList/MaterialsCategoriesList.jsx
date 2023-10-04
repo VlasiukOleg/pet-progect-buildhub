@@ -1,4 +1,4 @@
-import { CategoryWrap, CategoryNumber, CategoryTitle, CategoryInnerWrap, MaterialsWrap, ImgWrap, InfoWrap, Price, IncreaseBtn, DecreaseBtn, Input, QuantityWrap } from "./MaterialsCategoriesList.styled"
+import { CategoryWrap, CategoryNumber, CategoryTitle, CategoryInnerWrap, MaterialsWrap, ImgWrap, InfoWrap, Price, IncreaseBtn, DecreaseBtn, Input, QuantityWrap, TotalPrice} from "./MaterialsCategoriesList.styled"
 import mp75 from '../../images/mp75.jpg'
 
 import { useState } from "react"
@@ -16,10 +16,12 @@ export const MaterialsCategoriesList = () => {
         setQuantity(prevState => prevState - 1);
         
     }
-
     const onIncrease = () => {
-        setQuantity(prevState => prevState + 1);
-        
+        setQuantity(prevState => prevState + 1);  
+    }
+
+    const handleChange = (e) => {
+        setQuantity(e.target.value)
     }
 
     return (
@@ -44,12 +46,12 @@ export const MaterialsCategoriesList = () => {
                 </InfoWrap>
                 <QuantityWrap>
                     <DecreaseBtn onClick={onDecrease}>-</DecreaseBtn>
-                    <Input type="text" name='quantity' value={quantity}/>
+                    <Input type="text" name='quantity' value={quantity} onChange={handleChange}/>
                     <IncreaseBtn onClick={onIncrease}>+</IncreaseBtn>
                 </QuantityWrap>
-                <div>
+                <TotalPrice>
                     {total} грн.
-                </div>
+                </TotalPrice>
                 
             </MaterialsWrap>
             
