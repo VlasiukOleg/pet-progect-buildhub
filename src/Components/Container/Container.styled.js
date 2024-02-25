@@ -7,7 +7,7 @@ export const MainContainer = styled.div`
 
   position: relative; */
 
-  max-width: 1440px;
+  max-width: 1200px;
   margin: 0 auto;
   height: 100vh;
   padding: 0px 20px;
@@ -23,4 +23,4 @@ export const MainContainer = styled.div`
     height: 100vh;
     padding: 0px 96px 0 96px;
   } */
-`
+`;
