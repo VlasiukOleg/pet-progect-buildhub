@@ -6,6 +6,7 @@ export const MainContainer = styled.div`
   padding: 0px 20px 0 20px;
 
   position: relative; */
+  position: absolute;
 
   max-width: 1200px;
   margin: 0 auto;

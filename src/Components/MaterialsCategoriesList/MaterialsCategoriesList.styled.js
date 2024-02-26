@@ -6,6 +6,9 @@ export const CategoryWrap = styled.div`
   align-items: center;
   margin-top: 30px;
   margin-bottom: 20px;
+  border: 2px solid #5f9ea0;
+  padding: 10px 20px;
+  border-radius: 5px;
 `;
 
 export const CategoryInnerWrap = styled.div`
@@ -52,7 +55,7 @@ export const MaterialsWrap = styled.div`
   align-items: center;
   justify-content: space-around;
 
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 `;
 
 export const ImgWrap = styled.div`

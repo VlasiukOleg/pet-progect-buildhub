@@ -70,7 +70,7 @@ export const MaterialsCategoriesList = () => {
   return (
     <>
       {totalQuantity > 0 && (
-        <OrderBar weight={totalWeight} total={total.toFixed(2)} />
+        <OrderBar weight={totalWeight.toFixed(2)} total={total.toFixed(2)} />
       )}
       {materials.map((product, index) => {
         console.log(product);
