@@ -13,7 +13,10 @@ import {
   QuantityWrap,
   TotalPrice,
   ToogleCategoryBtn,
+  OrderBtnWrap,
 } from './MaterialsCategoriesList.styled';
+
+import { OrderButton } from 'Components/OrderBar/OrderBar.styled';
 
 import products from '../../products/products.json';
 
@@ -110,6 +113,7 @@ export const MaterialsCategoriesList = () => {
     <>
       {totalQuantity > 0 && (
         <OrderBar
+          quantity={totalQuantity}
           weight={totalWeight.toFixed(2)}
           total={totalMaterialsPrice.toFixed(2)}
         />
@@ -240,6 +244,13 @@ export const MaterialsCategoriesList = () => {
             Додати до замовлення
           </button>
         </>
+      )}
+      {totalQuantity > 0 && (
+        <OrderBtnWrap>
+          <OrderButton to="/order" type="button">
+            Переглянути та оформити замовлення
+          </OrderButton>
+        </OrderBtnWrap>
       )}
     </>
   );

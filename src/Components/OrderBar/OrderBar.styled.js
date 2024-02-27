@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const OrderWrap = styled.div`
@@ -50,4 +51,20 @@ export const TotalPriceWrap = styled.div`
 export const Sum = styled.div`
   margin-left: 2px;
   font-size: 18px;
+`;
+
+export const OrderButton = styled(Link)`
+  border: none;
+  outline: none;
+  background-color: rgb(23 89 92);
+  color: #fff;
+  margin-left: 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 250ms ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;

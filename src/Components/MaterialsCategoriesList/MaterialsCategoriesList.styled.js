@@ -135,3 +135,8 @@ export const TotalPrice = styled.div`
   border: 1px solid #5f9ea0;
   border-radius: 5px;
 `;
+
+export const OrderBtnWrap = styled.div`
+  text-align: center;
+  margin-top: 50px;
+`;
