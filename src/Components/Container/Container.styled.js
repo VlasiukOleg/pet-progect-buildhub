@@ -6,14 +6,11 @@ export const MainContainer = styled.div`
   padding: 0px 20px 0 20px;
 
   position: relative; */
-  position: absolute;
 
   max-width: 1200px;
   margin: 0 auto;
-  height: 100vh;
-  padding: 0px 20px;
 
-  position: relative;
+  padding: 0px 20px 20px 20px;
 
   /* @media screen and (min-width: 768px) {
     max-width: 768px;
