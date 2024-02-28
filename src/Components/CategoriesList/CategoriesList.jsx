@@ -1,19 +1,9 @@
-import {
-  MaterialsWrap,
-  ImgWrap,
-  InfoWrap,
-  Price,
-  IncreaseBtn,
-  DecreaseBtn,
-  Input,
-  QuantityWrap,
-  TotalPrice,
-  OrderBtnWrap,
-} from './CategoriesList.styled';
+import { OrderBtnWrap } from './CategoriesList.styled';
 
 import { OrderButton } from 'Components/OrderBar/OrderBar.styled';
 
 import { CategoryBar } from 'Components/CategoryBar/CategoryBar';
+import { MaterialsList } from 'Components/MaterialsList/MaterialsList';
 
 import products from '../../products/products.json';
 
@@ -128,37 +118,18 @@ export const MaterialsCategoriesList = () => {
               product.materials.map((material, ind) => {
                 const totalPrice = material.quantity * material.price;
                 return (
-                  <MaterialsWrap>
-                    <ImgWrap>
-                      <img src={material.image} alt={material.title} />
-                    </ImgWrap>
-
-                    <InfoWrap>
-                      <h2>{material.title}</h2>
-                      <p>{material.description}</p>
-                      <Price>Ціна: {material.price} грн.</Price>
-                    </InfoWrap>
-                    <QuantityWrap>
-                      <DecreaseBtn
-                        onClick={() => onChangeQuantity(index, ind, -1)}
-                        disabled={material.quantity === 0}
-                      >
-                        -
-                      </DecreaseBtn>
-                      <Input
-                        type="text"
-                        name="quantity"
-                        value={material.quantity}
-                        onChange={e => handleChange(e, index, ind)}
-                      />
-                      <IncreaseBtn
-                        onClick={() => onChangeQuantity(index, ind, 1)}
-                      >
-                        +
-                      </IncreaseBtn>
-                    </QuantityWrap>
-                    <TotalPrice>{totalPrice.toFixed(2)} грн.</TotalPrice>
-                  </MaterialsWrap>
+                  <MaterialsList
+                    image={material.image}
+                    title={material.title}
+                    description={material.description}
+                    price={material.price}
+                    quantity={material.quantity}
+                    index={index}
+                    ind={ind}
+                    totalPrice={totalPrice}
+                    onChangeQuantity={onChangeQuantity}
+                    handleChange={handleChange}
+                  />
                 );
               })}
           </>

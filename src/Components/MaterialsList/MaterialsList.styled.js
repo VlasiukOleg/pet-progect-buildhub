@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+
+
 export const MaterialsWrap = styled.div`
   display: flex;
   align-items: center;
@@ -86,7 +88,4 @@ export const TotalPrice = styled.div`
   border-radius: 5px;
 `;
 
-export const OrderBtnWrap = styled.div`
-  text-align: center;
-  margin-top: 50px;
-`;
+

@@ -5,7 +5,7 @@ import {
   CategoryNumber,
   CategoryTitle,
   ToogleCategoryBtn,
-} from 'Components/CategoriesList/CategoriesList.styled';
+} from './CategoryBar.styled';
 
 export const CategoryBar = ({
   number,
