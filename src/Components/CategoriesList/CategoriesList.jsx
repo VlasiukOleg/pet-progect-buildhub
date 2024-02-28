@@ -1,8 +1,4 @@
 import {
-  CategoryWrap,
-  CategoryNumber,
-  CategoryTitle,
-  CategoryInnerWrap,
   MaterialsWrap,
   ImgWrap,
   InfoWrap,
@@ -12,11 +8,12 @@ import {
   Input,
   QuantityWrap,
   TotalPrice,
-  ToogleCategoryBtn,
   OrderBtnWrap,
-} from './MaterialsCategoriesList.styled';
+} from './CategoriesList.styled';
 
 import { OrderButton } from 'Components/OrderBar/OrderBar.styled';
+
+import { CategoryBar } from 'Components/CategoryBar/CategoryBar';
 
 import products from '../../products/products.json';
 
@@ -24,8 +21,6 @@ import { useEffect, useState } from 'react';
 
 import { OrderBar } from 'Components/OrderBar/OrderBar';
 
-import { BiSolidDownArrow } from 'react-icons/bi';
-import { BiSolidUpArrow } from 'react-icons/bi';
 import { TbTruckDelivery } from 'react-icons/tb';
 import { GiWeightLiftingUp } from 'react-icons/gi';
 
@@ -47,14 +42,6 @@ export const MaterialsCategoriesList = () => {
     setTotalMaterialsPrice(prevState => prevState + total);
   }, [total]);
 
-  const onDeliveryOpen = () => {
-    setIsDeliveryOpen(prevState => !prevState);
-  };
-
-  const onMovingOpen = () => {
-    setIsMovingOpen(prevState => !prevState);
-  };
-
   const onAddMovingPrice = () => {};
 
   const onChangeQuantity = (index, ind, value) => {
@@ -65,6 +52,14 @@ export const MaterialsCategoriesList = () => {
   };
 
   const onCategoryOpen = index => {
+    if (index === 100) {
+      setIsDeliveryOpen(prevState => !prevState);
+      return;
+    }
+    if (index === 200) {
+      setIsMovingOpen(prevState => !prevState);
+      return;
+    }
     const updatedMaterials = [...materials];
 
     updatedMaterials[index].isCategoryOpen =
@@ -122,23 +117,13 @@ export const MaterialsCategoriesList = () => {
         console.log(product);
         return (
           <>
-            <CategoryWrap>
-              <CategoryInnerWrap>
-                <CategoryNumber>{product.number}</CategoryNumber>
-                <CategoryTitle>{product.categoryTitle}</CategoryTitle>
-              </CategoryInnerWrap>
-              <ToogleCategoryBtn
-                onClick={() => onCategoryOpen(index)}
-                type="button"
-              >
-                {!product.isCategoryOpen ? 'Розгорнути' : 'Згорнути'}
-                {!product.isCategoryOpen ? (
-                  <BiSolidDownArrow size="18px" />
-                ) : (
-                  <BiSolidUpArrow size="18px" />
-                )}
-              </ToogleCategoryBtn>
-            </CategoryWrap>
+            <CategoryBar
+              number={product.number}
+              title={product.categoryTitle}
+              index={index}
+              isCategoryOpen={product.isCategoryOpen}
+              onCategoryOpen={onCategoryOpen}
+            />
             {product.isCategoryOpen &&
               product.materials.map((material, ind) => {
                 const totalPrice = material.quantity * material.price;
@@ -179,22 +164,13 @@ export const MaterialsCategoriesList = () => {
           </>
         );
       })}
-      <CategoryWrap>
-        <CategoryInnerWrap>
-          <CategoryNumber>
-            <TbTruckDelivery size={16} color="#fff" />
-          </CategoryNumber>
-          <CategoryTitle>Доставка</CategoryTitle>
-        </CategoryInnerWrap>
-        <ToogleCategoryBtn onClick={onDeliveryOpen} type="button">
-          {!isDeliveryOpen ? 'Розгорнути' : 'Згорнути'}
-          {!isDeliveryOpen ? (
-            <BiSolidDownArrow size="18px" />
-          ) : (
-            <BiSolidUpArrow size="18px" />
-          )}
-        </ToogleCategoryBtn>
-      </CategoryWrap>
+      <CategoryBar
+        number={<TbTruckDelivery size={16} color="#fff" />}
+        title={'Доставка'}
+        index={100}
+        isCategoryOpen={isDeliveryOpen}
+        onCategoryOpen={onCategoryOpen}
+      />
       {isDeliveryOpen && (
         <>
           <div>
@@ -220,22 +196,13 @@ export const MaterialsCategoriesList = () => {
           </button>
         </>
       )}
-      <CategoryWrap>
-        <CategoryInnerWrap>
-          <CategoryNumber>
-            <GiWeightLiftingUp size={16} color="#fff" />
-          </CategoryNumber>
-          <CategoryTitle>Розвантаження</CategoryTitle>
-        </CategoryInnerWrap>
-        <ToogleCategoryBtn onClick={onMovingOpen} type="button">
-          {!isDeliveryOpen ? 'Розгорнути' : 'Згорнути'}
-          {!isDeliveryOpen ? (
-            <BiSolidDownArrow size="18px" />
-          ) : (
-            <BiSolidUpArrow size="18px" />
-          )}
-        </ToogleCategoryBtn>
-      </CategoryWrap>
+      <CategoryBar
+        number={<GiWeightLiftingUp size={16} color="#fff" />}
+        title={'Розвантаження'}
+        index={200}
+        isCategoryOpen={isMovingOpen}
+        onCategoryOpen={onCategoryOpen}
+      />
       {isMovingOpen && (
         <>
           <div>Загальна вага замовлення - {totalWeight} кг.</div>
