@@ -22,11 +22,11 @@ import { GiWeightLiftingUp } from 'react-icons/gi';
 export const MaterialsCategoriesList = () => {
   const dispatch = useDispatch();
   const materials = useSelector(getMaterials);
-  // const [materials, setMaterials] = useState([]);
+
   const [isDeliveryOpen, setIsDeliveryOpen] = useState(false);
   const [isMovingOpen, setIsMovingOpen] = useState(false);
   const [deliveryPrice, setDelivery] = useState(0);
-  const [totalMaterialsPrice, setTotalMaterialsPrice] = useState(0);
+  // const [totalMaterialsPrice, setTotalMaterialsPrice] = useState(0);
 
   const groupMaterials = materials.flatMap(material => material.materials);
 
@@ -35,7 +35,6 @@ export const MaterialsCategoriesList = () => {
   }, 0);
 
   useEffect(() => {
-    // setMaterials([...products]);
     // setTotalMaterialsPrice(prevState => prevState + total);
   }, [total]);
 
@@ -74,7 +73,7 @@ export const MaterialsCategoriesList = () => {
   }, 0);
 
   const onAddDeliveryToOrder = value => {
-    setTotalMaterialsPrice(prevState => prevState + value);
+    // setTotalMaterialsPrice(prevState => prevState + value);
   };
 
   const totalQuantity = groupMaterials.reduce((acc, value) => {
@@ -103,7 +102,7 @@ export const MaterialsCategoriesList = () => {
         <OrderBar
           quantity={totalQuantity}
           weight={totalWeight.toFixed(2)}
-          total={totalMaterialsPrice.toFixed(2)}
+          total={total.toFixed(2)}
         />
       )}
       {materials.map((product, index) => {
