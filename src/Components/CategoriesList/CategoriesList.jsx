@@ -5,8 +5,6 @@ import { OrderButton } from 'Components/OrderBar/OrderBar.styled';
 import { CategoryBar } from 'Components/CategoryBar/CategoryBar';
 import { MaterialsList } from 'Components/MaterialsList/MaterialsList';
 
-import products from '../../products/products.json';
-
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -44,11 +42,6 @@ export const MaterialsCategoriesList = () => {
   const onAddMovingPrice = () => {};
 
   const onChangeQuantity = (catIndex, matIndex, value) => {
-    // const updateQuantityField = [...materials];
-    // updateQuantityField[index].materials[ind].quantity =
-    //   Number(updateQuantityField[index].materials[ind].quantity) + value;
-    // setMaterials(updateQuantityField);
-
     console.log('Click');
     const payload = { catIndex, matIndex, value };
 
@@ -66,19 +59,9 @@ export const MaterialsCategoriesList = () => {
     }
 
     dispatch(toggleCategory(index));
-
-    // const updatedMaterials = [...materials];
-
-    // updatedMaterials[index].isCategoryOpen =
-    //   !updatedMaterials[index].isCategoryOpen;
-
-    // setMaterials(updatedMaterials);
   };
 
   const handleChange = (e, catIndex, matIndex) => {
-    // const updateQuantityField = [...materials];
-    // updateQuantityField[index].materials[ind].quantity = e.currentTarget.value;
-    // setMaterials(updateQuantityField);
     let value = e.currentTarget.value.trim();
     value = Math.max(0, value);
     value = parseInt(value, 10);
@@ -113,8 +96,6 @@ export const MaterialsCategoriesList = () => {
       setDelivery('розраховується індивідуально');
     }
   };
-
-  // deliveryCost(totalWeight);
 
   return (
     <>
