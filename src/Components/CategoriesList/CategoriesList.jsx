@@ -4,6 +4,7 @@ import { OrderButton } from 'Components/OrderBar/OrderBar.styled';
 
 import { CategoryBar } from 'Components/CategoryBar/CategoryBar';
 import { MaterialsList } from 'Components/MaterialsList/MaterialsList';
+import { Delivery } from 'Components/Delivery/Delivery';
 
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -25,7 +26,6 @@ export const MaterialsCategoriesList = () => {
 
   const [isDeliveryOpen, setIsDeliveryOpen] = useState(false);
   const [isMovingOpen, setIsMovingOpen] = useState(false);
-  const [deliveryPrice, setDelivery] = useState(0);
   // const [totalMaterialsPrice, setTotalMaterialsPrice] = useState(0);
 
   const groupMaterials = materials.flatMap(material => material.materials);
@@ -72,29 +72,9 @@ export const MaterialsCategoriesList = () => {
     return acc + value.weight * value.quantity;
   }, 0);
 
-  const onAddDeliveryToOrder = value => {
-    // setTotalMaterialsPrice(prevState => prevState + value);
-  };
-
   const totalQuantity = groupMaterials.reduce((acc, value) => {
     return acc + value.quantity;
   }, 0);
-
-  const deliveryCost = (value, weight) => {
-    console.log(value.target.value);
-    console.log(weight);
-    if (weight > 0 && weight <= 2000) {
-      setDelivery(800);
-    } else if (weight > 2000 && weight <= 3000) {
-      setDelivery(1200);
-    } else if (weight > 3000 && weight <= 5000) {
-      setDelivery(1500);
-    } else if (weight > 5000 && weight <= 10000) {
-      setDelivery(2000);
-    } else {
-      setDelivery('розраховується індивідуально');
-    }
-  };
 
   return (
     <>
@@ -144,31 +124,7 @@ export const MaterialsCategoriesList = () => {
         isCategoryOpen={isDeliveryOpen}
         onCategoryOpen={onCategoryOpen}
       />
-      {isDeliveryOpen && (
-        <>
-          <div>
-            <label>
-              Виберіть місто доставки
-              <select
-                name="city"
-                onChange={e => {
-                  deliveryCost(e, totalWeight);
-                }}
-              >
-                <option value="Київ">Київ</option>
-                <option value="Ірпінь">Ірпінь</option>
-              </select>
-            </label>
-          </div>
-          <div> Вартість доставки: {deliveryPrice} грн.</div>
-          <button
-            type="button"
-            onClick={() => onAddDeliveryToOrder(deliveryPrice)}
-          >
-            Додати до замовлення
-          </button>
-        </>
-      )}
+      {isDeliveryOpen && <Delivery weight={totalWeight} />}
       <CategoryBar
         number={<GiWeightLiftingUp size={16} color="#fff" />}
         title={'Розвантаження'}
