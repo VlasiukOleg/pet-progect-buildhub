@@ -44,6 +44,7 @@ export const MaterialsList = ({
           type="text"
           name="quantity"
           value={quantity}
+          min="1"
           onChange={e => handleChange(e, index, ind)}
         />
         <IncreaseBtn onClick={() => onChangeQuantity(index, ind, 1)}>

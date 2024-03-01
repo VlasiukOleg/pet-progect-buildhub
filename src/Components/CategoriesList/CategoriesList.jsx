@@ -8,6 +8,13 @@ import { MaterialsList } from 'Components/MaterialsList/MaterialsList';
 import products from '../../products/products.json';
 
 import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  toggleCategory,
+  changeQuantity,
+  inputChangeQuantity,
+} from '../../redux/materialsSlice';
+import { getMaterials } from '../../redux/selectors';
 
 import { OrderBar } from 'Components/OrderBar/OrderBar';
 
@@ -15,7 +22,9 @@ import { TbTruckDelivery } from 'react-icons/tb';
 import { GiWeightLiftingUp } from 'react-icons/gi';
 
 export const MaterialsCategoriesList = () => {
-  const [materials, setMaterials] = useState([]);
+  const dispatch = useDispatch();
+  const materials = useSelector(getMaterials);
+  // const [materials, setMaterials] = useState([]);
   const [isDeliveryOpen, setIsDeliveryOpen] = useState(false);
   const [isMovingOpen, setIsMovingOpen] = useState(false);
   const [deliveryPrice, setDelivery] = useState(0);
@@ -28,17 +37,22 @@ export const MaterialsCategoriesList = () => {
   }, 0);
 
   useEffect(() => {
-    setMaterials([...products]);
-    setTotalMaterialsPrice(prevState => prevState + total);
+    // setMaterials([...products]);
+    // setTotalMaterialsPrice(prevState => prevState + total);
   }, [total]);
 
   const onAddMovingPrice = () => {};
 
-  const onChangeQuantity = (index, ind, value) => {
-    const updateQuantityField = [...materials];
-    updateQuantityField[index].materials[ind].quantity =
-      Number(updateQuantityField[index].materials[ind].quantity) + value;
-    setMaterials(updateQuantityField);
+  const onChangeQuantity = (catIndex, matIndex, value) => {
+    // const updateQuantityField = [...materials];
+    // updateQuantityField[index].materials[ind].quantity =
+    //   Number(updateQuantityField[index].materials[ind].quantity) + value;
+    // setMaterials(updateQuantityField);
+
+    console.log('Click');
+    const payload = { catIndex, matIndex, value };
+
+    dispatch(changeQuantity(payload));
   };
 
   const onCategoryOpen = index => {
@@ -50,18 +64,26 @@ export const MaterialsCategoriesList = () => {
       setIsMovingOpen(prevState => !prevState);
       return;
     }
-    const updatedMaterials = [...materials];
 
-    updatedMaterials[index].isCategoryOpen =
-      !updatedMaterials[index].isCategoryOpen;
+    dispatch(toggleCategory(index));
 
-    setMaterials(updatedMaterials);
+    // const updatedMaterials = [...materials];
+
+    // updatedMaterials[index].isCategoryOpen =
+    //   !updatedMaterials[index].isCategoryOpen;
+
+    // setMaterials(updatedMaterials);
   };
 
-  const handleChange = (e, index, ind) => {
-    const updateQuantityField = [...materials];
-    updateQuantityField[index].materials[ind].quantity = e.currentTarget.value;
-    setMaterials(updateQuantityField);
+  const handleChange = (e, catIndex, matIndex) => {
+    // const updateQuantityField = [...materials];
+    // updateQuantityField[index].materials[ind].quantity = e.currentTarget.value;
+    // setMaterials(updateQuantityField);
+    let value = e.currentTarget.value.trim();
+    value = Math.max(0, value);
+    value = parseInt(value, 10);
+    const payload = { catIndex, matIndex, value };
+    dispatch(inputChangeQuantity(payload));
   };
 
   const totalWeight = groupMaterials.reduce((acc, value) => {

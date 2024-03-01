@@ -3,11 +3,16 @@ import { Container } from 'Components/Container/Container';
 
 import { Title } from './HomePage.styled';
 
-export default function Home() {
+export default function Home({ materials, onChangeQuantity }) {
   return (
     <Container>
+      {/* <CityBtn type="button">Київ</CityBtn>
+      <img src={map} alt="map of kiyvskiy region" width={500}></img> */}
       <Title>Замовлення матеріалів для ручної та машинної штукатурки</Title>
-      <MaterialsCategoriesList />
+      <MaterialsCategoriesList
+        materials={materials}
+        onChangeQuantity={onChangeQuantity}
+      />
     </Container>
   );
 }
