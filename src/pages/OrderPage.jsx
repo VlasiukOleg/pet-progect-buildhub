@@ -6,7 +6,7 @@ import { OrderList } from 'Components/OrderList/OrderList';
 export default function OrderPage() {
   return (
     <Container>
-      <Title>Сторінка замовлення</Title>
+      <Title>Оформити замовлення</Title>
       <OrderList />
     </Container>
   );

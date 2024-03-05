@@ -5,8 +5,9 @@ import { OrderButton } from 'Components/OrderBar/OrderBar.styled';
 import { CategoryBar } from 'Components/CategoryBar/CategoryBar';
 import { MaterialsList } from 'Components/MaterialsList/MaterialsList';
 import { Delivery } from 'Components/Delivery/Delivery';
+import { Moving } from 'Components/Moving/Moving';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   toggleCategory,
@@ -26,19 +27,12 @@ export const MaterialsCategoriesList = () => {
 
   const [isDeliveryOpen, setIsDeliveryOpen] = useState(false);
   const [isMovingOpen, setIsMovingOpen] = useState(false);
-  // const [totalMaterialsPrice, setTotalMaterialsPrice] = useState(0);
 
   const groupMaterials = materials.flatMap(material => material.materials);
 
   const total = groupMaterials.reduce((acc, value) => {
     return acc + value.price * value.quantity;
   }, 0);
-
-  useEffect(() => {
-    // setTotalMaterialsPrice(prevState => prevState + total);
-  }, [total]);
-
-  const onAddMovingPrice = () => {};
 
   const onChangeQuantity = (catIndex, matIndex, value) => {
     console.log('Click');
@@ -132,15 +126,7 @@ export const MaterialsCategoriesList = () => {
         isCategoryOpen={isMovingOpen}
         onCategoryOpen={onCategoryOpen}
       />
-      {isMovingOpen && (
-        <>
-          <div>Загальна вага замовлення - {totalWeight} кг.</div>
-          <div>Вартість вантажників - {totalWeight * 0.6} грн.</div>
-          <button type="button" onClick={onAddMovingPrice}>
-            Додати до замовлення
-          </button>
-        </>
-      )}
+      {isMovingOpen && <Moving totalWeight={totalWeight} />}
       {totalQuantity > 0 && (
         <OrderBtnWrap>
           <OrderButton to="/order" type="button">

@@ -1,6 +1,10 @@
 import { useSelector } from 'react-redux';
 import { getMaterials } from '../../redux/selectors';
 
+import { OrderMaterial } from 'Components/OrderMaterial/OrderMaterial';
+
+import { MaterialsOrderList, MaterialOrderItem } from './OrderList.styled';
+
 export const OrderList = () => {
   const materials = useSelector(getMaterials);
 
@@ -10,17 +14,14 @@ export const OrderList = () => {
   );
 
   return (
-    <>
+    <MaterialsOrderList>
       {filteredMaterialsByQuantity.map(material => {
         return (
-          <img
-            src={material.image}
-            width={100}
-            height={100}
-            alt={material.title}
-          />
+          <MaterialOrderItem key={material.title}>
+            <OrderMaterial material={material} />
+          </MaterialOrderItem>
         );
       })}
-    </>
+    </MaterialsOrderList>
   );
 };
