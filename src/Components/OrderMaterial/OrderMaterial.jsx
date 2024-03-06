@@ -2,6 +2,8 @@ import {
   MaterialTitle,
   MaterialQuantity,
   MaterialPriceWrap,
+  MaterialPrice,
+  MaterialTotalPrice,
 } from './OrderMaterial.styled';
 
 export const OrderMaterial = ({ material }) => {
@@ -11,8 +13,10 @@ export const OrderMaterial = ({ material }) => {
       <MaterialTitle>{material.title}</MaterialTitle>
       <MaterialQuantity>{material.quantity}</MaterialQuantity>
       <MaterialPriceWrap>
-        <p>{material.price}</p>
-        <p>{(material.quantity * material.price).toFixed(2)}</p>
+        <MaterialPrice>{material.price} грн.</MaterialPrice>
+        <MaterialTotalPrice>
+          {(material.quantity * material.price).toFixed(2)} грн.
+        </MaterialTotalPrice>
       </MaterialPriceWrap>
     </>
   );

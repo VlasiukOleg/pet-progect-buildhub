@@ -6,11 +6,16 @@ import { store } from './redux/store';
 import { Provider } from 'react-redux';
 import './index.css';
 
+import { ThemeProvider } from 'styled-components';
+import { theme } from './theme/theme';
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter basename="/pet-project-buildhub">
       <Provider store={store}>
-        <App />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>
