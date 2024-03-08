@@ -11,7 +11,7 @@ import { theme } from './theme/theme';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/pet-project-buildhub">
+    <BrowserRouter basename="/project-buildhub">
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <App />
