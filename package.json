@@ -1,8 +1,8 @@
 {
-  "name": "pet-project-buildhub",
+  "name": "project-buildhub",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://VlasiukOleg.github.io/pet-project-buildhub/",
+  "homepage": "https://VlasiukOleg.github.io/project-buildhub/",
   "dependencies": {
     "@mui/material": "^5.14.3",
     "@mui/styled-engine-sc": "^5.12.0",
