@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-
-
 export const MaterialsWrap = styled.div`
   display: flex;
   align-items: center;
@@ -73,6 +71,15 @@ export const Input = styled.input`
   outline: none;
   border: none;
   text-align: center;
+
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  ::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;
 
 export const QuantityWrap = styled.div`
@@ -87,5 +94,3 @@ export const TotalPrice = styled.div`
   border: 1px solid #5f9ea0;
   border-radius: 5px;
 `;
-
-

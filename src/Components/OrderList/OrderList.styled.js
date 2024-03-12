@@ -6,12 +6,11 @@ export const OrderListWrap = styled.div`
 
 export const MaterialsOrderList = styled.ul`
   margin-bottom: 15px;
-  margin-top: 15px;
   max-height: 350px;
   border: 1px solid grey;
   border-radius: 5px;
   overflow: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   scrollbar-color: ${({ theme }) => theme.colors.primary}
     ${({ theme }) => theme.colors.light};
   scrollbar-width: thin;

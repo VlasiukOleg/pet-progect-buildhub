@@ -41,7 +41,7 @@ export const MaterialsList = ({
           -
         </DecreaseBtn>
         <Input
-          type="text"
+          type="number"
           name="quantity"
           value={quantity}
           min="1"
