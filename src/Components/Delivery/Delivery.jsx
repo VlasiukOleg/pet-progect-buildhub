@@ -18,11 +18,6 @@ export const Delivery = ({ weight }) => {
     dispatch(setDeliveryType(value));
   };
 
-  useEffect(() => {
-    const value = calculateDeliveryFee(weight);
-    dispatch(setDeliveryPrice(value));
-  }, [dispatch, weight]);
-
   return (
     <DeliveryWrap>
       <Label>

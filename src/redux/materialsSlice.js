@@ -24,9 +24,17 @@ const materialsSlice = createSlice({
         action.payload.matIndex
       ].quantity = action.payload.value;
     },
+    clearQuantity(state, action) {
+      const groupMaterials = state.flatMap(material => material.materials);
+      groupMaterials.map(item => (item.quantity = action.payload));
+    },
   },
 });
 
-export const { toggleCategory, changeQuantity, inputChangeQuantity } =
-  materialsSlice.actions;
+export const {
+  toggleCategory,
+  changeQuantity,
+  inputChangeQuantity,
+  clearQuantity,
+} = materialsSlice.actions;
 export const materialsReducer = materialsSlice.reducer;
