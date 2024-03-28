@@ -1,10 +1,8 @@
-import {
-  OrderWrap,
-  WeightWrap,
-  TotalPriceWrap,
-  Sum,
-  OrderButton,
-} from './OrderBar.styled';
+import { useState } from 'react';
+
+import { OrderWrap, WeightWrap, TotalPriceWrap, Sum } from './OrderBar.styled';
+
+import { Link as OrderLink } from 'react-router-dom';
 
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -20,11 +18,25 @@ import { TbTruckDelivery } from 'react-icons/tb';
 
 import IconButton from '@mui/material/IconButton';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import Button from '@mui/material/Button';
 
 export const OrderBar = ({ weight, total, quantity }) => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+
   const deliveryPrice = useSelector(getDeliveryPrice);
   const deliveryType = useSelector(getDeliveryType);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    function handleScroll() {
+      setScrollPosition(window.scrollY);
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const value = calculateDeliveryFee(weight);
@@ -37,7 +49,7 @@ export const OrderBar = ({ weight, total, quantity }) => {
   };
 
   return (
-    <OrderWrap>
+    <OrderWrap scroll={scrollPosition}>
       <div>
         <p>
           Кількість товарів: {quantity}{' '}
@@ -59,10 +71,15 @@ export const OrderBar = ({ weight, total, quantity }) => {
       <TotalPriceWrap>
         <IoPricetagsOutline size="18px" />
         <Sum>Сума: </Sum> <span>{total} грн.</span>
-        <OrderButton to="/order" type="button">
-          Замовити
-        </OrderButton>
       </TotalPriceWrap>
+      <Button
+        variant="contained"
+        color="teal"
+        to="/order"
+        component={OrderLink}
+      >
+        Замовити
+      </Button>
     </OrderWrap>
   );
 };

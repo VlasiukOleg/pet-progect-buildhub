@@ -1,11 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-
 export const Logo = styled(NavLink)`
   display: flex;
- justify-content: center;
- align-items: center;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
   padding: 12px;
   font-weight: 700;
@@ -13,21 +12,20 @@ export const Logo = styled(NavLink)`
   font-size: 20px;
 
   span {
-    color: #5F9EA0;
+    color: #5f9ea0;
   }
-`
+`;
 
 export const Nav = styled.nav`
-    ul {
-        display: flex;
+  ul {
+    display: flex;
     justify-content: center;
     align-items: center;
-    }
-    
-`
+  }
+`;
 
 export const MainLink = styled(NavLink)`
-    display: inline-block;
+  display: inline-block;
   text-decoration: none;
   padding: 12px;
   font-weight: 700;
@@ -36,15 +34,14 @@ export const MainLink = styled(NavLink)`
   /* &.active {
     color: #5F9EA0;
   } */
-`
+`;
 
 export const PhoneLink = styled(NavLink)`
- display: flex;
- justify-content: center;
- align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
   padding: 12px;
   font-weight: 700;
-  color: #5F9EA0;
-  
-`
+  color: #5f9ea0;
+`;

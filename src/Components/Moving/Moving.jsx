@@ -1,78 +1,62 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { setMovingCost } from '../../redux/movingSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setMovingCost,
+  toggleMovingPriceToOrder,
+} from '../../redux/movingSlice';
+import {
+  getMovingPrice,
+  getIsMovingPriceAddToOrder,
+} from '../../redux/selectors';
 
 import { ToogleMovingBtn } from './Moving.styled';
 
 export const Moving = ({ totalWeight }) => {
+  const MIN_PRICE = 400;
+  const BASE_PRICE = 0.5;
+
   const [elevatorDistance, setElevatorDistance] = useState(10);
   const [floor, setFloor] = useState(1);
   const [elevator, setElevator] = useState('cargo');
   const [building, setBuilding] = useState('new');
-  const [movingPrice, setMovingPrice] = useState(0);
-  const [isMovingPriceAdd, setIsMovingPriceAdd] = useState(false);
+
+  const movingPrice = useSelector(getMovingPrice);
+  const isMovingPriceAddToOrder = useSelector(getIsMovingPriceAddToOrder);
 
   const dispatch = useDispatch();
 
-  const onAddMovingPriceToOrder = () => {
-    if (isMovingPriceAdd) {
-      dispatch(setMovingCost(0));
-      setIsMovingPriceAdd(prevState => !prevState);
-      return;
-    }
-    dispatch(setMovingCost(movingPrice));
-    setIsMovingPriceAdd(prevState => !prevState);
+  const onAddMovingPrice = () => {
+    dispatch(toggleMovingPriceToOrder());
   };
 
   const onChangeElevator = e => {
     setElevator(e.target.value);
-    setMovingPrice(prevState => Math.round(prevState * 1.15));
+    setMovingCost(prevState => Math.round(prevState * 1.15));
   };
+
   const onChangeBuilding = e => {
     setBuilding(e.target.value);
-    setMovingPrice(prevState => Math.round(prevState * 1.06));
+    setMovingCost(prevState => Math.round(prevState * 1.06));
   };
+
   const onChangeFloor = e => {
     if (floor < e.target.value) {
-      setMovingPrice(prevState => Math.round(prevState * 1.1));
+      setMovingCost(prevState => Math.round(prevState * 1.1));
     } else {
-      setMovingPrice(prevState => Math.round(prevState / 1.1));
+      setMovingCost(prevState => Math.round(prevState / 1.1));
     }
     console.log(e.target.value);
     setFloor(e.target.value);
   };
 
   useEffect(() => {
-    const calculateMovingFee = weight => {
-      if (weight < 1000 && weight > 0 && elevator === 'cargo') {
-        setMovingPrice(500);
-        return;
-      }
-      if (weight >= 1000 && elevator === 'cargo') {
-        setMovingPrice(weight * 0.6);
-        return;
-      }
-      if (weight < 1000 && weight > 0 && elevator === 'nolift') {
-        setMovingPrice(750);
-        return;
-      }
-      if (weight >= 1000 && elevator === 'nolift' && building === 'new') {
-        setMovingPrice(weight * 0.85);
-      }
-    };
-    if (isMovingPriceAdd) {
-      dispatch(setMovingCost(movingPrice));
+    if (totalWeight > 0 && totalWeight < 1000) {
+      dispatch(setMovingCost(MIN_PRICE));
+      return;
+    } else {
+      dispatch(setMovingCost(totalWeight * BASE_PRICE));
     }
-
-    calculateMovingFee(totalWeight);
-  }, [
-    building,
-    elevator,
-    totalWeight,
-    dispatch,
-    isMovingPriceAdd,
-    movingPrice,
-  ]);
+  }, [totalWeight, dispatch]);
 
   return (
     <>
@@ -166,10 +150,12 @@ export const Moving = ({ totalWeight }) => {
 
       <ToogleMovingBtn
         type="button"
-        onClick={onAddMovingPriceToOrder}
-        isMovingPriceAdd={isMovingPriceAdd}
+        onClick={onAddMovingPrice}
+        isMovingPriceAdd={isMovingPriceAddToOrder}
       >
-        {isMovingPriceAdd ? 'Прибрати с замовлення' : 'Додати до замовлення'}
+        {isMovingPriceAddToOrder
+          ? 'Прибрати с замовлення'
+          : 'Додати до замовлення'}
       </ToogleMovingBtn>
     </>
   );

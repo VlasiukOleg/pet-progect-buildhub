@@ -1,6 +1,5 @@
 import { OrderBtnWrap } from './CategoriesList.styled';
 
-import { OrderButton } from 'Components/OrderBar/OrderBar.styled';
 
 import { CategoryBar } from 'Components/CategoryBar/CategoryBar';
 import { MaterialsList } from 'Components/MaterialsList/MaterialsList';
@@ -18,6 +17,9 @@ import { getMaterials } from '../../redux/selectors';
 import { OrderBar } from 'Components/OrderBar/OrderBar';
 
 import { GiWeightLiftingUp } from 'react-icons/gi';
+
+import { Link as OrderLink } from 'react-router-dom';
+import Button from '@mui/material/Button';
 
 export const MaterialsCategoriesList = () => {
   const dispatch = useDispatch();
@@ -115,9 +117,14 @@ export const MaterialsCategoriesList = () => {
       {isMovingOpen && <Moving totalWeight={totalWeight} />}
       {totalQuantity > 0 && (
         <OrderBtnWrap>
-          <OrderButton to="/order" type="button">
+          <Button
+            variant="contained"
+            color="teal"
+            to="/order"
+            component={OrderLink}
+          >
             Переглянути та оформити замовлення
-          </OrderButton>
+          </Button>
         </OrderBtnWrap>
       )}
     </>

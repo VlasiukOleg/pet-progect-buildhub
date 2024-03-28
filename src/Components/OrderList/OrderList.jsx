@@ -4,6 +4,7 @@ import {
   getDeliveryPrice,
   // getDeliveryType,
   getMovingPrice,
+  getIsMovingPriceAddToOrder,
 } from '../../redux/selectors';
 
 import { OrderMaterial } from 'Components/OrderMaterial/OrderMaterial';
@@ -22,6 +23,7 @@ export const OrderList = () => {
   // const deliveryType = useSelector(getDeliveryType);
   const deliveryFee = useSelector(getDeliveryPrice);
   const movingFee = useSelector(getMovingPrice);
+  const isMovingPriceAddToOrder = useSelector(getIsMovingPriceAddToOrder);
 
   const groupMaterials = materials.flatMap(material => material.materials);
   const filteredMaterialsByQuantity = groupMaterials.filter(
@@ -43,7 +45,9 @@ export const OrderList = () => {
         })}
       </MaterialsOrderList>
       <Delivery>Доставка: {deliveryFee} грн.</Delivery>
-      <Moving>Розвантаження: {movingFee} грн. </Moving>
+      {isMovingPriceAddToOrder && (
+        <Moving>Розвантаження: {movingFee} грн. </Moving>
+      )}
       <Total>
         Всього до оплати:{' '}
         <span>{(total + deliveryFee + movingFee).toFixed(2)} </span>грн.

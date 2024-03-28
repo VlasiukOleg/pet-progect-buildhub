@@ -80,7 +80,13 @@ export const StorageMap = () => {
           {deliveryType === 'pickup' ? 'Самовивіз' : 'Доставка автотранспортом'}
         </Typography>
       )}
-      <Button variant="contained" onClick={handleClickNextPage} sx={{ mt: 2 }}>
+      <Button
+        variant="contained"
+        onClick={handleClickNextPage}
+        sx={{ mt: 2 }}
+        disabled={deliveryType === ''}
+        color="teal"
+      >
         Продовжити
       </Button>
     </StorageMapWrap>

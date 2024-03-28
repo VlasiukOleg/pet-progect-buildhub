@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import './index.css';
 
 import { ThemeProvider } from 'styled-components';
+
 import { theme } from './theme/theme';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

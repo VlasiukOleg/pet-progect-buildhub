@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 export const OrderWrap = styled.div`
   position: fixed;
-  top: 0;
-  left: 130px;
-  width: 1200px;
+  top: ${props => (props.scroll > 48 ? '0' : '48px')};
+  left: 0;
+  width: 100%;
 
   display: flex;
   align-items: center;
@@ -14,8 +14,10 @@ export const OrderWrap = styled.div`
 
   padding: 5px 30px;
   color: #ffffff;
-  background-color: #5f9ea0;
+  background-color: #80cbc4;
   border-radius: 10px;
+
+  transition: top 250ms ease-in-out;
 `;
 
 export const WeightWrap = styled.div`

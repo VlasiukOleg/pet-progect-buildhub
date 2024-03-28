@@ -5,3 +5,5 @@ export const getDeliveryPrice = state => state.delivery.deliveryPrice;
 export const getDeliveryStorage = state => state.delivery.deliveryStorage;
 
 export const getMovingPrice = state => state.moving.movingPrice;
+export const getIsMovingPriceAddToOrder = state =>
+  state.moving.isMovingPriceAddToOrder;

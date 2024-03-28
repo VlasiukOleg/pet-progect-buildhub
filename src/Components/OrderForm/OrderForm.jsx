@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { StyledTextField } from './OrderForm.styled';
 
 const phoneRegex = /^(0\d{2}) (\d{3}) (\d{2}) (\d{2})$/;
 
@@ -30,12 +31,13 @@ export const OrderForm = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <TextField
+      <StyledTextField
         id="outlined"
         label="Ім'я"
         size="small"
         margin="normal"
         name="firstName"
+        color="teal"
         {...register('firstName')}
       />
       <p>{errors.firstName?.message}</p>
@@ -45,6 +47,7 @@ export const OrderForm = () => {
         size="small"
         margin="normal"
         name="email"
+        color="teal"
         {...register('email')}
       />
       <p>{errors.email?.message}</p>
@@ -54,6 +57,7 @@ export const OrderForm = () => {
         size="small"
         margin="normal"
         name="phone"
+        color="teal"
         {...register('phone')}
       />
       <p>{errors.phone?.message}</p>
@@ -65,14 +69,15 @@ export const OrderForm = () => {
         type="text"
         name="address"
         {...register('address')}
+        color="teal"
       />
       <p>{errors.address?.message}</p>
       <Button
         variant="contained"
+        color="teal"
         type="submit"
         size="medium"
         margin="normal"
-        color="success"
         sx={{
           mt: 4,
         }}

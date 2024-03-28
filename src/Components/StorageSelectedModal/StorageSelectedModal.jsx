@@ -9,6 +9,8 @@ import ListItemText from '@mui/material/ListItemText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import PersonIcon from '@mui/icons-material/Person';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import { StyledDialogTitle } from './StorageSelectedModal.styled';
 
 import { blue } from '@mui/material/colors';
 
@@ -20,18 +22,14 @@ const deliveryType = [
 export const StorageSelectedModal = props => {
   const { onClose, selectedValue, open } = props;
 
-  const handleClose = () => {
-    onClose('');
-  };
-
   const handleListItemClick = value => {
     onClose(value);
   };
 
   return (
-    <Dialog onClose={handleClose} open={open}>
+    <Dialog open={open}>
       <DialogTitle>{selectedValue}</DialogTitle>
-      <DialogTitle> Виберіть тип доставки</DialogTitle>
+      <StyledDialogTitle> Виберіть тип доставки:</StyledDialogTitle>
       <List sx={{ pt: 0 }}>
         {deliveryType.map(({ type, text }) => (
           <>
@@ -39,7 +37,11 @@ export const StorageSelectedModal = props => {
               <ListItemButton onClick={() => handleListItemClick(type)}>
                 <ListItemAvatar>
                   <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
-                    <PersonIcon />
+                    {type === 'delivery' ? (
+                      <LocalShippingIcon />
+                    ) : (
+                      <PersonIcon />
+                    )}
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText primary={text} />
