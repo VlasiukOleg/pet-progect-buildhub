@@ -13,9 +13,9 @@ import { ToogleMovingBtn } from './Moving.styled';
 
 export const Moving = ({ totalWeight }) => {
   const MIN_PRICE = 400;
-  const BASE_PRICE = 0.5;
+  const BASE_PRICE = totalWeight * 0.5;
 
-  const [elevatorDistance, setElevatorDistance] = useState(10);
+  const [distance, setDistance] = useState(20);
   const [floor, setFloor] = useState(1);
   const [elevator, setElevator] = useState('cargo');
   const [building, setBuilding] = useState('new');
@@ -29,14 +29,8 @@ export const Moving = ({ totalWeight }) => {
     dispatch(toggleMovingPriceToOrder());
   };
 
-  const onChangeElevator = e => {
-    setElevator(e.target.value);
-    setMovingCost(prevState => Math.round(prevState * 1.15));
-  };
-
   const onChangeBuilding = e => {
     setBuilding(e.target.value);
-    setMovingCost(prevState => Math.round(prevState * 1.06));
   };
 
   const onChangeFloor = e => {
@@ -54,9 +48,17 @@ export const Moving = ({ totalWeight }) => {
       dispatch(setMovingCost(MIN_PRICE));
       return;
     } else {
-      dispatch(setMovingCost(totalWeight * BASE_PRICE));
+      dispatch(setMovingCost(BASE_PRICE));
     }
-  }, [totalWeight, dispatch]);
+
+    if (elevator === 'passenger') {
+      dispatch(setMovingCost(Math.round(BASE_PRICE * 1.15)));
+    }
+
+    if (distance === '30' && distance === '30') {
+      dispatch(setMovingCost(Math.round(BASE_PRICE * 1.3)));
+    }
+  }, [totalWeight, dispatch, elevator, BASE_PRICE, distance]);
 
   return (
     <>
@@ -69,7 +71,7 @@ export const Moving = ({ totalWeight }) => {
             name="elevator"
             value="passenger"
             checked={elevator === 'passenger'}
-            onChange={onChangeElevator}
+            onChange={e => setElevator(e.target.value)}
           />
           Пасажирський ліфт
         </label>
@@ -79,7 +81,7 @@ export const Moving = ({ totalWeight }) => {
             name="elevator"
             value="cargo"
             checked={elevator === 'cargo'}
-            onChange={onChangeElevator}
+            onChange={e => setElevator(e.target.value)}
           />
           Вантажний ліфт
         </label>
@@ -89,7 +91,7 @@ export const Moving = ({ totalWeight }) => {
             name="elevator"
             value="nolift"
             checked={elevator === 'nolift'}
-            onChange={onChangeElevator}
+            onChange={e => setElevator(e.target.value)}
           />
           Без ліфта
         </label>
@@ -132,17 +134,17 @@ export const Moving = ({ totalWeight }) => {
 
       <label>
         <p>
-          Загальна відстань заносу матеріалу від машини до ліфта, від ліфта до
-          квартири -{elevatorDistance} м.
+          Приблизна загальна відстань заносу матеріалу від машини до ліфта, від
+          ліфта до квартири -{distance} м.
         </p>
         <input
           type="range"
           min="0"
           max="100"
           name="elevator_distance"
-          value={elevatorDistance}
+          value={distance}
           step="5"
-          onChange={e => setElevatorDistance(e.target.value)}
+          onChange={e => setDistance(e.target.value)}
         />
       </label>
 

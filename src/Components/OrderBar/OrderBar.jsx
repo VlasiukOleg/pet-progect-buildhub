@@ -8,13 +8,19 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setDeliveryPrice } from '../../redux/deliverySlice';
 import { clearQuantity } from '../../redux/materialsSlice';
-import { getDeliveryPrice, getDeliveryType } from '../../redux/selectors';
+import {
+  getDeliveryPrice,
+  getDeliveryType,
+  getIsMovingPriceAddToOrder,
+  getMovingPrice,
+} from '../../redux/selectors';
 
 import { calculateDeliveryFee } from 'utils/calculateDeliveryFee';
 
 import { IoPricetagsOutline } from 'react-icons/io5';
 import { TbWeight } from 'react-icons/tb';
 import { TbTruckDelivery } from 'react-icons/tb';
+import { FaPeopleCarry } from 'react-icons/fa';
 
 import IconButton from '@mui/material/IconButton';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
@@ -25,6 +31,9 @@ export const OrderBar = ({ weight, total, quantity }) => {
 
   const deliveryPrice = useSelector(getDeliveryPrice);
   const deliveryType = useSelector(getDeliveryType);
+  const isMovingPriceAddToOrder = useSelector(getIsMovingPriceAddToOrder);
+  const movingPrice = useSelector(getMovingPrice);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -60,12 +69,19 @@ export const OrderBar = ({ weight, total, quantity }) => {
       </div>
 
       <WeightWrap>
-        <TbWeight size="18px" /> Вага <span>{weight} кг</span>{' '}
+        <TbWeight size="18px" />
+        <span>{weight} кг</span>{' '}
       </WeightWrap>
       {deliveryType === 'delivery' && (
         <WeightWrap>
-          <TbTruckDelivery size="18px" /> Доставка{' '}
+          <TbTruckDelivery size="18px" />
           <span>{deliveryPrice} грн.</span>{' '}
+        </WeightWrap>
+      )}
+      {isMovingPriceAddToOrder && (
+        <WeightWrap>
+          <FaPeopleCarry size="18px" />
+          <span>{movingPrice} грн.</span>{' '}
         </WeightWrap>
       )}
       <TotalPriceWrap>

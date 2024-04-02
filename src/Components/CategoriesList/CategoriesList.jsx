@@ -1,9 +1,14 @@
-import { OrderBtnWrap } from './CategoriesList.styled';
+import { Link as OrderLink } from 'react-router-dom';
 
+import { FaPeopleCarry } from 'react-icons/fa';
+import Button from '@mui/material/Button';
+
+import { OrderBtnWrap } from './CategoriesList.styled';
 
 import { CategoryBar } from 'Components/CategoryBar/CategoryBar';
 import { MaterialsList } from 'Components/MaterialsList/MaterialsList';
 import { Moving } from 'Components/Moving/Moving';
+import { OrderBar } from 'Components/OrderBar/OrderBar';
 
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -14,13 +19,6 @@ import {
 } from '../../redux/materialsSlice';
 import { getMaterials } from '../../redux/selectors';
 
-import { OrderBar } from 'Components/OrderBar/OrderBar';
-
-import { GiWeightLiftingUp } from 'react-icons/gi';
-
-import { Link as OrderLink } from 'react-router-dom';
-import Button from '@mui/material/Button';
-
 export const MaterialsCategoriesList = () => {
   const dispatch = useDispatch();
   const materials = useSelector(getMaterials);
@@ -28,14 +26,12 @@ export const MaterialsCategoriesList = () => {
   const [isMovingOpen, setIsMovingOpen] = useState(false);
 
   const groupMaterials = materials.flatMap(material => material.materials);
-  console.log(groupMaterials);
 
   const total = groupMaterials.reduce((acc, value) => {
     return acc + value.price * value.quantity;
   }, 0);
 
   const onChangeQuantity = (catIndex, matIndex, value) => {
-    console.log('Click');
     const payload = { catIndex, matIndex, value };
 
     dispatch(changeQuantity(payload));
@@ -76,7 +72,6 @@ export const MaterialsCategoriesList = () => {
         />
       )}
       {materials.map((product, index) => {
-        console.log(product);
         return (
           <>
             <CategoryBar
@@ -108,7 +103,7 @@ export const MaterialsCategoriesList = () => {
         );
       })}
       <CategoryBar
-        number={<GiWeightLiftingUp size={16} color="#fff" />}
+        number={<FaPeopleCarry size={16} color="#fff" />}
         title={'Розвантаження'}
         index={200}
         isCategoryOpen={isMovingOpen}

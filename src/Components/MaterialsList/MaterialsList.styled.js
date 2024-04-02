@@ -68,7 +68,7 @@ export const DecreaseBtn = styled.button`
 
 export const Input = styled.input`
   max-width: 60px;
-  font-size: 28px;
+  font-size: 24px;
   outline: none;
   border: none;
   text-align: center;
@@ -90,7 +90,7 @@ export const QuantityWrap = styled.div`
 `;
 
 export const TotalPrice = styled.div`
-  font-size: 28px;
+  font-size: 24px;
   padding: 10px;
   border: 1px solid #5f9ea0;
   border-radius: 5px;

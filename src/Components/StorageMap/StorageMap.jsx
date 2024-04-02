@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDeliveryType, getDeliveryStorage } from '../../redux/selectors';
 import { setDeliveryType, setDeliveryStorage } from '../../redux/deliverySlice';
 
-import map from '../../images/kiev_district.jpg';
+import map from '../../images/kiev_district.webp';
 import { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
