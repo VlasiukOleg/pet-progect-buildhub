@@ -1,30 +1,30 @@
 {
   "files": {
     "main.css": "/project-buildhub/static/css/main.a871f1e2.css",
-    "main.js": "/project-buildhub/static/js/main.c63e4728.js",
-    "static/js/882.08869939.chunk.js": "/project-buildhub/static/js/882.08869939.chunk.js",
+    "main.js": "/project-buildhub/static/js/main.293673c1.js",
+    "static/js/505.ff7231b9.chunk.js": "/project-buildhub/static/js/505.ff7231b9.chunk.js",
     "static/js/469.6267e523.chunk.js": "/project-buildhub/static/js/469.6267e523.chunk.js",
-    "static/js/679.50a74beb.chunk.js": "/project-buildhub/static/js/679.50a74beb.chunk.js",
+    "static/js/679.4692985c.chunk.js": "/project-buildhub/static/js/679.4692985c.chunk.js",
     "static/js/686.03befe2d.chunk.js": "/project-buildhub/static/js/686.03befe2d.chunk.js",
     "static/js/174.f2d58583.chunk.js": "/project-buildhub/static/js/174.f2d58583.chunk.js",
     "static/js/308.47439c33.chunk.js": "/project-buildhub/static/js/308.47439c33.chunk.js",
     "static/js/887.fd46eafc.chunk.js": "/project-buildhub/static/js/887.fd46eafc.chunk.js",
-    "static/js/217.c3b1327d.chunk.js": "/project-buildhub/static/js/217.c3b1327d.chunk.js",
-    "static/media/kiev_district.jpg": "/project-buildhub/static/media/kiev_district.72b7761c694594056c21.jpg",
+    "static/js/668.3b1d9602.chunk.js": "/project-buildhub/static/js/668.3b1d9602.chunk.js",
+    "static/media/kiev_district.webp": "/project-buildhub/static/media/kiev_district.bc1959254728df94fa96.webp",
     "index.html": "/project-buildhub/index.html",
     "main.a871f1e2.css.map": "/project-buildhub/static/css/main.a871f1e2.css.map",
-    "main.c63e4728.js.map": "/project-buildhub/static/js/main.c63e4728.js.map",
-    "882.08869939.chunk.js.map": "/project-buildhub/static/js/882.08869939.chunk.js.map",
+    "main.293673c1.js.map": "/project-buildhub/static/js/main.293673c1.js.map",
+    "505.ff7231b9.chunk.js.map": "/project-buildhub/static/js/505.ff7231b9.chunk.js.map",
     "469.6267e523.chunk.js.map": "/project-buildhub/static/js/469.6267e523.chunk.js.map",
-    "679.50a74beb.chunk.js.map": "/project-buildhub/static/js/679.50a74beb.chunk.js.map",
+    "679.4692985c.chunk.js.map": "/project-buildhub/static/js/679.4692985c.chunk.js.map",
     "686.03befe2d.chunk.js.map": "/project-buildhub/static/js/686.03befe2d.chunk.js.map",
     "174.f2d58583.chunk.js.map": "/project-buildhub/static/js/174.f2d58583.chunk.js.map",
     "308.47439c33.chunk.js.map": "/project-buildhub/static/js/308.47439c33.chunk.js.map",
     "887.fd46eafc.chunk.js.map": "/project-buildhub/static/js/887.fd46eafc.chunk.js.map",
-    "217.c3b1327d.chunk.js.map": "/project-buildhub/static/js/217.c3b1327d.chunk.js.map"
+    "668.3b1d9602.chunk.js.map": "/project-buildhub/static/js/668.3b1d9602.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a871f1e2.css",
-    "static/js/main.c63e4728.js"
+    "static/js/main.293673c1.js"
   ]
 }
