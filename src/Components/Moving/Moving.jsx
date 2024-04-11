@@ -28,25 +28,21 @@ export const Moving = ({ totalWeight }) => {
     dispatch(toggleMovingPriceToOrder());
   };
 
-  const onChangeBuilding = e => {
-    setBuilding(e.target.value);
-  };
-
-  const onChangeFloor = e => {
-    if (floor < e.target.value) {
-      setMovingCost(prevState => Math.round(prevState * 1.1));
-    } else {
-      setMovingCost(prevState => Math.round(prevState / 1.1));
-    }
-    console.log(e.target.value);
-    setFloor(e.target.value);
-  };
-
   useEffect(() => {
-    const movingFee = calculateMovingFee(totalWeight, elevator, distance);
+    if (elevator !== 'nolift') {
+      setFloor(1);
+      setBuilding('new');
+    }
+    const movingFee = calculateMovingFee(
+      totalWeight,
+      elevator,
+      distance,
+      building,
+      floor
+    );
 
     dispatch(setMovingCost(Math.round(movingFee)));
-  }, [totalWeight, dispatch, elevator, distance]);
+  }, [totalWeight, dispatch, elevator, distance, floor, building]);
 
   return (
     <>
@@ -93,7 +89,7 @@ export const Moving = ({ totalWeight }) => {
               name="building"
               value="new"
               checked={building === 'new'}
-              onChange={onChangeBuilding}
+              onChange={e => setBuilding(e.target.value)}
             />
             Новий дім/Хрущевка
           </label>
@@ -103,7 +99,7 @@ export const Moving = ({ totalWeight }) => {
               name="building"
               value="old"
               checked={building === 'old'}
-              onChange={onChangeBuilding}
+              onChange={e => setBuilding(e.target.value)}
             />
             Сталінка/Царський
           </label>
@@ -114,7 +110,7 @@ export const Moving = ({ totalWeight }) => {
               name="floor"
               min="1"
               value={floor}
-              onChange={onChangeFloor}
+              onChange={e => setFloor(e.target.value)}
             />
           </label>
         </div>

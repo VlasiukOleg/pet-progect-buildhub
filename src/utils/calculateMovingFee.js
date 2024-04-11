@@ -1,10 +1,15 @@
 const MIN_PRICE = 400;
 const BASE_PRICE = 0.5;
+const PRICE_PER_FLOOR = 0.25;
 
-export const calculateMovingFee = (weight, elevator, distance) => {
+export const calculateMovingFee = (
+  weight,
+  elevator,
+  distance,
+  building,
+  floor
+) => {
   let movingFee = 0;
-  console.log(weight);
-  console.log(distance);
 
   if (weight > 0 && weight < 1000) {
     movingFee = MIN_PRICE;
@@ -14,6 +19,14 @@ export const calculateMovingFee = (weight, elevator, distance) => {
 
   if (elevator === 'passenger') {
     movingFee *= 1.15;
+  }
+
+  if (floor > 1) {
+    movingFee = (BASE_PRICE + PRICE_PER_FLOOR * (floor - 1)) * weight;
+  }
+
+  if (floor > 1 && building === 'old') {
+    movingFee = (BASE_PRICE + (PRICE_PER_FLOOR + 0.05) * (floor - 1)) * weight;
   }
 
   if (distance <= 20) {
