@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link as OrderLink } from 'react-router-dom';
 
 import { FaPeopleCarry } from 'react-icons/fa';
@@ -10,8 +12,6 @@ import { MaterialsList } from 'Components/MaterialsList/MaterialsList';
 import { Moving } from 'Components/Moving/Moving';
 import { OrderBar } from 'Components/OrderBar/OrderBar';
 
-import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import {
   toggleCategory,
   changeQuantity,

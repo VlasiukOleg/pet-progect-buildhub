@@ -48,8 +48,8 @@ export const OrderBar = ({ weight, total, quantity }) => {
   }, []);
 
   useEffect(() => {
-    const value = calculateDeliveryFee(weight);
-    dispatch(setDeliveryPrice(value));
+    const deliveryFee = calculateDeliveryFee(weight);
+    dispatch(setDeliveryPrice(deliveryFee));
   }, [dispatch, weight]);
 
   const onClearOrder = () => {

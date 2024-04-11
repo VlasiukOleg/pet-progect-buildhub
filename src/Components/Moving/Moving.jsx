@@ -11,10 +11,9 @@ import {
 
 import { ToogleMovingBtn } from './Moving.styled';
 
-export const Moving = ({ totalWeight }) => {
-  const MIN_PRICE = 400;
-  const BASE_PRICE = totalWeight * 0.5;
+import { calculateMovingFee } from 'utils/calculateMovingFee';
 
+export const Moving = ({ totalWeight }) => {
   const [distance, setDistance] = useState(20);
   const [floor, setFloor] = useState(1);
   const [elevator, setElevator] = useState('cargo');
@@ -44,21 +43,10 @@ export const Moving = ({ totalWeight }) => {
   };
 
   useEffect(() => {
-    if (totalWeight > 0 && totalWeight < 1000) {
-      dispatch(setMovingCost(MIN_PRICE));
-      return;
-    } else {
-      dispatch(setMovingCost(BASE_PRICE));
-    }
+    const movingFee = calculateMovingFee(totalWeight, elevator, distance);
 
-    if (elevator === 'passenger') {
-      dispatch(setMovingCost(Math.round(BASE_PRICE * 1.15)));
-    }
-
-    if (distance === '30' && distance === '30') {
-      dispatch(setMovingCost(Math.round(BASE_PRICE * 1.3)));
-    }
-  }, [totalWeight, dispatch, elevator, BASE_PRICE, distance]);
+    dispatch(setMovingCost(Math.round(movingFee)));
+  }, [totalWeight, dispatch, elevator, distance]);
 
   return (
     <>
@@ -144,7 +132,7 @@ export const Moving = ({ totalWeight }) => {
           name="elevator_distance"
           value={distance}
           step="5"
-          onChange={e => setDistance(e.target.value)}
+          onChange={e => setDistance(Number(e.target.value))}
         />
       </label>
 
@@ -156,7 +144,7 @@ export const Moving = ({ totalWeight }) => {
         isMovingPriceAdd={isMovingPriceAddToOrder}
       >
         {isMovingPriceAddToOrder
-          ? 'Прибрати с замовлення'
+          ? 'Прибрати з замовлення'
           : 'Додати до замовлення'}
       </ToogleMovingBtn>
     </>
