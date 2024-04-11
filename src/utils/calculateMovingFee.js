@@ -22,11 +22,10 @@ export const calculateMovingFee = (
   }
 
   if (floor > 1) {
-    movingFee = (BASE_PRICE + PRICE_PER_FLOOR * (floor - 1)) * weight;
-  }
-
-  if (floor > 1 && building === 'old') {
-    movingFee = (BASE_PRICE + (PRICE_PER_FLOOR + 0.05) * (floor - 1)) * weight;
+    movingFee =
+      building === 'old'
+        ? (BASE_PRICE + (PRICE_PER_FLOOR + 0.05) * (floor - 1)) * weight
+        : (BASE_PRICE + PRICE_PER_FLOOR * (floor - 1)) * weight;
   }
 
   if (distance <= 20) {
