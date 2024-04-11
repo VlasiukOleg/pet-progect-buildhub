@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/project-buildhub/static/css/main.a871f1e2.css",
-    "main.js": "/project-buildhub/static/js/main.1942c974.js",
+    "main.js": "/project-buildhub/static/js/main.08f23563.js",
     "static/js/505.ff7231b9.chunk.js": "/project-buildhub/static/js/505.ff7231b9.chunk.js",
     "static/js/469.6267e523.chunk.js": "/project-buildhub/static/js/469.6267e523.chunk.js",
-    "static/js/656.9f8efd0b.chunk.js": "/project-buildhub/static/js/656.9f8efd0b.chunk.js",
+    "static/js/656.2cf3e678.chunk.js": "/project-buildhub/static/js/656.2cf3e678.chunk.js",
     "static/js/686.03befe2d.chunk.js": "/project-buildhub/static/js/686.03befe2d.chunk.js",
     "static/js/174.f2d58583.chunk.js": "/project-buildhub/static/js/174.f2d58583.chunk.js",
     "static/js/308.47439c33.chunk.js": "/project-buildhub/static/js/308.47439c33.chunk.js",
@@ -13,10 +13,10 @@
     "static/media/kiev_district.webp": "/project-buildhub/static/media/kiev_district.bc1959254728df94fa96.webp",
     "index.html": "/project-buildhub/index.html",
     "main.a871f1e2.css.map": "/project-buildhub/static/css/main.a871f1e2.css.map",
-    "main.1942c974.js.map": "/project-buildhub/static/js/main.1942c974.js.map",
+    "main.08f23563.js.map": "/project-buildhub/static/js/main.08f23563.js.map",
     "505.ff7231b9.chunk.js.map": "/project-buildhub/static/js/505.ff7231b9.chunk.js.map",
     "469.6267e523.chunk.js.map": "/project-buildhub/static/js/469.6267e523.chunk.js.map",
-    "656.9f8efd0b.chunk.js.map": "/project-buildhub/static/js/656.9f8efd0b.chunk.js.map",
+    "656.2cf3e678.chunk.js.map": "/project-buildhub/static/js/656.2cf3e678.chunk.js.map",
     "686.03befe2d.chunk.js.map": "/project-buildhub/static/js/686.03befe2d.chunk.js.map",
     "174.f2d58583.chunk.js.map": "/project-buildhub/static/js/174.f2d58583.chunk.js.map",
     "308.47439c33.chunk.js.map": "/project-buildhub/static/js/308.47439c33.chunk.js.map",
@@ -25,6 +25,6 @@
   },
   "entrypoints": [
     "static/css/main.a871f1e2.css",
-    "static/js/main.1942c974.js"
+    "static/js/main.08f23563.js"
   ]
 }
