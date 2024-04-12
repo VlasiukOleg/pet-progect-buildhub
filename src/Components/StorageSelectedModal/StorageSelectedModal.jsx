@@ -12,7 +12,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import { StyledDialogTitle } from './StorageSelectedModal.styled';
 
-import { blue } from '@mui/material/colors';
+import { blue, teal } from '@mui/material/colors';
 
 const deliveryType = [
   { type: 'delivery', text: 'Доставка автотранспортом' },
@@ -28,15 +28,18 @@ export const StorageSelectedModal = props => {
 
   return (
     <Dialog open={open}>
-      <DialogTitle>{selectedValue}</DialogTitle>
-      <StyledDialogTitle> Виберіть тип доставки:</StyledDialogTitle>
+      <DialogTitle sx={{ fontSize: 16 }}>{selectedValue}</DialogTitle>
+      <StyledDialogTitle sx={{ fontWeight: 700 }}>
+        {' '}
+        Виберіть тип доставки:
+      </StyledDialogTitle>
       <List sx={{ pt: 0 }}>
         {deliveryType.map(({ type, text }) => (
           <>
             <ListItem disableGutters key={type}>
               <ListItemButton onClick={() => handleListItemClick(type)}>
                 <ListItemAvatar>
-                  <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
+                  <Avatar sx={{ bgcolor: teal[50], color: teal[600] }}>
                     {type === 'delivery' ? (
                       <LocalShippingIcon />
                     ) : (
@@ -44,7 +47,7 @@ export const StorageSelectedModal = props => {
                     )}
                   </Avatar>
                 </ListItemAvatar>
-                <ListItemText primary={text} />
+                <ListItemText primary={text} sx={{ color: teal[600] }} />
               </ListItemButton>
             </ListItem>
           </>
