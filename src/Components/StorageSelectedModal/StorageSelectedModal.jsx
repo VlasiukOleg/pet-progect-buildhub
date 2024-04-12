@@ -12,7 +12,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import { StyledDialogTitle } from './StorageSelectedModal.styled';
 
-import { blue, teal } from '@mui/material/colors';
+import { teal } from '@mui/material/colors';
 
 const deliveryType = [
   { type: 'delivery', text: 'Доставка автотранспортом' },
