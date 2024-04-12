@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const CityBtn = styled.button`
   position: absolute;
-  //   top: 214px;
   left: ${props => {
     if (props.number === 1) {
       return '45%';
@@ -14,22 +13,22 @@ export const CityBtn = styled.button`
       return '30%';
     }
     if (props.number === 4) {
-      return '71%';
+      return '68%';
     }
   }};
 
   top: ${props => {
     if (props.number === 1) {
-      return '28%';
+      return '35%';
     }
     if (props.number === 2) {
-      return '46%';
+      return '51%';
     }
     if (props.number === 3) {
-      return '39%';
+      return '41%';
     }
     if (props.number === 4) {
-      return '53%';
+      return '57%';
     }
   }};
 
@@ -42,7 +41,8 @@ export const CityBtn = styled.button`
 
   color: ${({ theme }) => theme.colors.darkAccent};
   font-weight: 700;
-  background-color: ${({ theme }) => theme.colors.accent};
+  background-color: ${({ theme, active, number }) =>
+    number === active ? 'white' : theme.colors.accent};
   border-radius: 50%;
 
   border: 2px solid ${({ theme }) => theme.colors.darkAccent};
@@ -55,8 +55,11 @@ export const CityBtn = styled.button`
   }
 `;
 
-export const StorageMapWrap = styled.div`
+export const StorageInnerWrap = styled.div`
   position: relative;
+`;
+
+export const StorageMapWrap = styled.div`
   text-align: center;
 `;
 

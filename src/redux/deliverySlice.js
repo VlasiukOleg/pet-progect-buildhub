@@ -6,6 +6,7 @@ const deliverySlice = createSlice({
     deliveryType: '',
     deliveryStorage: '',
     deliveryPrice: 0,
+    activeStore: null,
   },
   reducers: {
     setDeliveryType(state, action) {
@@ -17,9 +18,16 @@ const deliverySlice = createSlice({
     setDeliveryPrice(state, action) {
       state.deliveryPrice = action.payload;
     },
+    setActiveStore(state, action) {
+      state.activeStore = action.payload;
+    },
   },
 });
 
-export const { setDeliveryType, setDeliveryPrice, setDeliveryStorage } =
-  deliverySlice.actions;
+export const {
+  setDeliveryType,
+  setDeliveryPrice,
+  setDeliveryStorage,
+  setActiveStore,
+} = deliverySlice.actions;
 export const deliveryReducer = deliverySlice.reducer;

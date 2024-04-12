@@ -16,5 +16,6 @@ const movingSlice = createSlice({
   },
 });
 
-export const { setMovingCost, toggleMovingPriceToOrder } = movingSlice.actions;
+export const { setMovingCost, toggleMovingPriceToOrder, setActiveStore } =
+  movingSlice.actions;
 export const movingReducer = movingSlice.reducer;

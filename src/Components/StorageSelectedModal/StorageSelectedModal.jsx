@@ -22,8 +22,8 @@ const deliveryType = [
 export const StorageSelectedModal = props => {
   const { onClose, selectedValue, open } = props;
 
-  const handleListItemClick = value => {
-    onClose(value);
+  const handleListItemClick = deliveryType => {
+    onClose(deliveryType);
   };
 
   return (

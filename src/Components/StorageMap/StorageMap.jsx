@@ -1,16 +1,31 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDeliveryType, getDeliveryStorage } from '../../redux/selectors';
-import { setDeliveryType, setDeliveryStorage } from '../../redux/deliverySlice';
+import {
+  getDeliveryType,
+  getDeliveryStorage,
+  getActiveStore,
+} from '../../redux/selectors';
+import {
+  setDeliveryType,
+  setDeliveryStorage,
+  setActiveStore,
+} from '../../redux/deliverySlice';
 
-import map from '../../images/kiev_district.webp';
-import { useState } from 'react';
+import mapImage from '../../images/kiev_district.webp';
+
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 import { StorageSelectedModal } from 'Components/StorageSelectedModal/StorageSelectedModal';
 
-import { CityBtn, StorageMapWrap, Image, Title } from './StorageMap.styled';
+import {
+  CityBtn,
+  StorageMapWrap,
+  StorageInnerWrap,
+  Image,
+  Title,
+} from './StorageMap.styled';
 
 const storages = [
   { id: 1, location: 'Київ, вул. Марка Вовчка, 14 (Куренівка)' },
@@ -23,19 +38,21 @@ export const StorageMap = () => {
   const dispatch = useDispatch();
   const deliveryType = useSelector(getDeliveryType);
   const deliveryStorage = useSelector(getDeliveryStorage);
+  const activeStore = useSelector(getActiveStore);
 
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState('');
 
-  const handleClickOpen = storageLocation => {
+  const handleClickOpen = (storageLocation, storageId) => {
     setOpen(true);
     setSelectedValue(storageLocation);
+    dispatch(setActiveStore(storageId));
   };
 
-  const handleClose = value => {
+  const handleClose = deliveryType => {
     setOpen(false);
-    dispatch(setDeliveryType(value));
+    dispatch(setDeliveryType(deliveryType));
     dispatch(setDeliveryStorage(selectedValue));
 
     window.scrollTo({
@@ -51,18 +68,21 @@ export const StorageMap = () => {
   return (
     <StorageMapWrap>
       <Title>Оберіть найближчий до Вас склад завантаження</Title>
+      <StorageInnerWrap>
+        {storages.map(({ location, id }) => (
+          <CityBtn
+            type="button"
+            number={id}
+            active={activeStore}
+            onClick={() => handleClickOpen(location, id)}
+          >
+            {id}
+          </CityBtn>
+        ))}
 
-      {storages.map(storage => (
-        <CityBtn
-          type="button"
-          number={storage.id}
-          onClick={() => handleClickOpen(storage.location)}
-        >
-          {storage.id}
-        </CityBtn>
-      ))}
+        <Image src={mapImage} alt="map of kiyv" width={600}></Image>
+      </StorageInnerWrap>
 
-      <Image src={map} alt="map of kiyv" width={600}></Image>
       <StorageSelectedModal
         selectedValue={selectedValue}
         open={open}
