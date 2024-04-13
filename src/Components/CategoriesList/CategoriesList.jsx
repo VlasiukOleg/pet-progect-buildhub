@@ -31,6 +31,14 @@ export const MaterialsCategoriesList = () => {
     return acc + value.price * value.quantity;
   }, 0);
 
+  const totalWeight = groupMaterials.reduce((acc, value) => {
+    return acc + value.weight * value.quantity;
+  }, 0);
+
+  const totalQuantity = groupMaterials.reduce((acc, value) => {
+    return acc + value.quantity;
+  }, 0);
+
   const onChangeQuantity = (catIndex, matIndex, value) => {
     const payload = { catIndex, matIndex, value };
 
@@ -48,19 +56,19 @@ export const MaterialsCategoriesList = () => {
 
   const handleChange = (e, catIndex, matIndex) => {
     let value = e.currentTarget.value.trim();
+
+    if (value.charAt(0) === '0' && value.length > 1) {
+      value = value.slice(1);
+      console.log(value);
+      e.currentTarget.value = value;
+    }
+
     value = Math.max(0, value);
     value = parseInt(value, 10);
+
     const payload = { catIndex, matIndex, value };
     dispatch(inputChangeQuantity(payload));
   };
-
-  const totalWeight = groupMaterials.reduce((acc, value) => {
-    return acc + value.weight * value.quantity;
-  }, 0);
-
-  const totalQuantity = groupMaterials.reduce((acc, value) => {
-    return acc + value.quantity;
-  }, 0);
 
   return (
     <>

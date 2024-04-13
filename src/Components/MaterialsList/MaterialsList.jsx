@@ -22,6 +22,24 @@ export const MaterialsList = ({
   handleChange,
   totalPrice,
 }) => {
+  const handleFocus = e => {
+    let value = e.currentTarget.value.trim();
+
+    // Видаляємо ведучі нулі, якщо значення дорівнює "0"
+    if (value === '0') {
+      e.currentTarget.value = '';
+    }
+  };
+
+  const handleBlur = e => {
+    let value = e.currentTarget.value.trim();
+
+    // Перевіряємо, чи значення після видалення нулів не є порожнім рядком
+    if (!value) {
+      e.currentTarget.value = '0';
+    }
+  };
+
   return (
     <MaterialsWrap>
       <ImgWrap>
@@ -34,10 +52,7 @@ export const MaterialsList = ({
         <Price>Ціна: {price} грн.</Price>
       </InfoWrap>
       <QuantityWrap>
-        <DecreaseBtn
-          onClick={() => onChangeQuantity(index, ind, -1)}
-          disabled={quantity === 0}
-        >
+        <DecreaseBtn onClick={() => onChangeQuantity(index, ind, -1)}>
           -
         </DecreaseBtn>
         <Input
@@ -46,6 +61,8 @@ export const MaterialsList = ({
           value={quantity}
           min="1"
           onChange={e => handleChange(e, index, ind)}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
         <IncreaseBtn onClick={() => onChangeQuantity(index, ind, 1)}>
           +
