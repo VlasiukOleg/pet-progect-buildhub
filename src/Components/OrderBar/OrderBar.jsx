@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
-import { OrderWrap, WeightWrap, TotalPriceWrap, Sum } from './OrderBar.styled';
+import { OrderWrap, BoxWrap, CartWrap } from './OrderBar.styled';
+import { CartButton, StyledBadge } from './OrderBarMuiStyled';
 
 import { Link as OrderLink } from 'react-router-dom';
 
@@ -23,8 +24,10 @@ import { TbTruckDelivery } from 'react-icons/tb';
 import { FaPeopleCarry } from 'react-icons/fa';
 
 import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import Button from '@mui/material/Button';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 export const OrderBar = ({ weight, total, quantity }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -59,43 +62,49 @@ export const OrderBar = ({ weight, total, quantity }) => {
 
   return (
     <OrderWrap scroll={scrollPosition}>
-      <div>
-        <p>
-          Кількість товарів: {quantity}{' '}
-          <IconButton aria-label="delete" onClick={onClearOrder} color="error">
-            <DeleteForeverIcon size="small" />
-          </IconButton>
-        </p>
-      </div>
+      <CartWrap>
+        <BoxWrap>
+          <TbWeight size="18px" />
+          <span>{weight} кг</span>{' '}
+        </BoxWrap>
+        {deliveryType === 'delivery' && (
+          <BoxWrap>
+            <TbTruckDelivery size="18px" />
+            <span>{deliveryPrice} грн.</span>{' '}
+          </BoxWrap>
+        )}
+        {isMovingPriceAddToOrder && (
+          <BoxWrap>
+            <FaPeopleCarry size="18px" />
+            <span>{movingPrice} грн.</span>{' '}
+          </BoxWrap>
+        )}
+      </CartWrap>
+      <CartWrap>
+        <BoxWrap>
+          <IoPricetagsOutline size="18px" />
+          <span>{total} грн.</span>
+        </BoxWrap>
+        <CartButton to="/order" component={OrderLink}>
+          <StyledBadge badgeContent={quantity} color="success" sx={{ mr: 2 }}>
+            <ShoppingCartIcon color="action" />
+          </StyledBadge>
+          <Typography
+            variant="button"
+            sx={{
+              fontSize: '14px',
+              fontWeight: '700',
+              fontFamily: 'Montserrat',
+            }}
+          >
+            Кошик
+          </Typography>
+        </CartButton>
 
-      <WeightWrap>
-        <TbWeight size="18px" />
-        <span>{weight} кг</span>{' '}
-      </WeightWrap>
-      {deliveryType === 'delivery' && (
-        <WeightWrap>
-          <TbTruckDelivery size="18px" />
-          <span>{deliveryPrice} грн.</span>{' '}
-        </WeightWrap>
-      )}
-      {isMovingPriceAddToOrder && (
-        <WeightWrap>
-          <FaPeopleCarry size="18px" />
-          <span>{movingPrice} грн.</span>{' '}
-        </WeightWrap>
-      )}
-      <TotalPriceWrap>
-        <IoPricetagsOutline size="18px" />
-        <Sum>Сума: </Sum> <span>{total} грн.</span>
-      </TotalPriceWrap>
-      <Button
-        variant="contained"
-        color="teal"
-        to="/order"
-        component={OrderLink}
-      >
-        Замовити
-      </Button>
+        <IconButton aria-label="delete" onClick={onClearOrder} color="error">
+          <DeleteForeverIcon size="small" />
+        </IconButton>
+      </CartWrap>
     </OrderWrap>
   );
 };

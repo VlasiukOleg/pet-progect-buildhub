@@ -1,11 +1,10 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const OrderWrap = styled.div`
   position: fixed;
   top: ${props => (props.scroll > 48 ? '0' : '48px')};
-  left: 0;
-  width: 100%;
+  left: 50%;
+  width: 1200px;
 
   display: flex;
   align-items: center;
@@ -17,10 +16,12 @@ export const OrderWrap = styled.div`
   background-color: #80cbc4;
   border-radius: 10px;
 
+  transform: translateX(-50%);
+
   transition: top 250ms ease-in-out;
 `;
 
-export const WeightWrap = styled.div`
+export const BoxWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,44 +30,15 @@ export const WeightWrap = styled.div`
   background-color: #ffffff;
   color: #696969;
 
+  margin-right: 16px;
+
   span {
     font-weight: 700;
     margin-left: 5px;
   }
 `;
-export const TotalPriceWrap = styled.div`
+
+export const CartWrap = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-
-  span {
-    display: inline-block;
-    font-weight: 700;
-    margin-left: 5px;
-    padding: 5px;
-    border-radius: 5px;
-    background-color: #ffffff;
-    color: #696969;
-  }
-`;
-
-export const Sum = styled.div`
-  margin-left: 2px;
-  font-size: 18px;
-`;
-
-export const OrderButton = styled(Link)`
-  border: none;
-  outline: none;
-  background-color: rgb(23 89 92);
-  color: #fff;
-  margin-left: 10px;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: transform 250ms ease-in-out;
-
-  &:hover {
-    transform: scale(1.05);
-  }
 `;
