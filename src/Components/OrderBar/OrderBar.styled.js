@@ -33,7 +33,7 @@ export const BoxWrap = styled.div`
   margin-right: 16px;
 
   span {
-    font-weight: 700;
+    font-weight: 500;
     margin-left: 5px;
   }
 `;
